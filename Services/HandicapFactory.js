@@ -5,7 +5,7 @@
         var factory = {};
 
         factory.CalcHandicap = function (myrounds) {
-            console.log(myrounds);   
+            // console.log(myrounds);                           
             var ttl = 0;
             var RoundsCnt = myrounds.length;
             for(var i=0; i<RoundsCnt;i++){
