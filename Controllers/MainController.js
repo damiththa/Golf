@@ -22,7 +22,7 @@
 
 (function () {
     "use strict";
-    var MainController = function ($scope, SecretsService, AirTableService, HandicapFactory) {    
+    var MainController = function ($scope, SecretsService, AirTableService, HandicapFactory, FireBaseFactory) {    
         var Secret_Retrun = SecretsService.getKeys();
         Secret_Retrun.then(function(data){
             $scope.Secrets = data;
@@ -30,32 +30,21 @@
             $scope.FireBase_Secrets = $scope.Secrets.data.urls.FireBase;
             // console.log(AirTable_Secrets);
             
-            var myRounds_PromiseReturn = AirTableService.getMyRounds($scope.AirTable_Secrets);
-           console.log(myRounds_PromiseReturn);
-            // myRounds_PromiseReturn.then(function (data){
-            //     $scope.myRounds = data;
-            //     console.log($scope.myRounds.data.records);
-            //     // $scope.myHandicap = HandicapFactory.CalcHandicap($scope.myRounds.data.records);
-            //     // console.log($scope.myHandicap);
-            // });
+            var myRounds_PromiseReturn = AirTableService.getMyRounds($scope.AirTable_Secrets);           
+            myRounds_PromiseReturn.then(function (data){
+                $scope.myRounds = data;
+                // console.log($scope.myRounds.data.records);
+                $scope.myHandicap = HandicapFactory.CalcHandicap($scope.myRounds.data.records);
+                // console.log($scope.myHandicap);
+                $scope.APA = FireBaseFactory.intoFireBase($scope.FireBase_Secrets, $scope.myHandicap); //Into FireBase 
+            });
             
         }).catch(function(){
            console.log('error loading secrets'); 
-        });      
-        
-        
-        
-        // var myRounds_PromiseReturn = AirTableService.getMyRounds($scope.AirTable_Secrets);
-        // myRounds_PromiseReturn.then(function(data){
-        //     $scope.myRounds = data;
-        //     console.log($scoe.myRounds.data.records);
-        // })
-        
-        
-        
+        });
     };
     
-    MainController.$inject = ['$scope', 'SecretsService', 'AirTableService', 'HandicapFactory'];
+    MainController.$inject = ['$scope', 'SecretsService', 'AirTableService', 'HandicapFactory', 'FireBaseFactory'];
     
     angular.module('appGolf')
         .controller('MainController', MainController);    
