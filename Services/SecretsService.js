@@ -3,8 +3,7 @@
     var SecretsService = function ($http) {
         var SecretsMethods = {
             getKeys: function(){
-                var AA = 'FFFF';
-                return AA;
+                return $http.get('Secrets/secretKeys.json');
             }
         };
         return SecretsMethods;
