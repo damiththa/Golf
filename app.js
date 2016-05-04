@@ -9,5 +9,5 @@
                 templateUrl: 'Views/home.html'
             })            
             .otherwise({redirectTo: '/'});
-	}]);
+	}]);    
 }());
