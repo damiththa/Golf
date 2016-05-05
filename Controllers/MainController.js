@@ -1,25 +1,3 @@
-// (function () {
-//     "use strict";
-//     var MainController = function ($scope, AirTableService, HandicapFactory, $rootScope){
-//         $scope.$on('secrets-loaded', function(){ //by listerning to broadcast, making sure secrets are loaded first
-//             $scope.keys = $rootScope.secrets.urls;
-//             // console.log($scope.keys);
-            
-//             var myRounds_PromiseReturn = AirTableService.getMyRounds($scope.keys.AirTable);
-//             myRounds_PromiseReturn.then(function (data){
-//                 $scope.myRounds = data;
-//                 console.log($scope.myRounds.data.records);
-//                 $scope.myHandicap = HandicapFactory.CalcHandicap($scope.myRounds.data.records);
-//                 console.log($scope.myHandicap);
-//             })
-//         }); 
-//     }
-//     MainController.$inject = ['$scope', 'AirTableService', 'HandicapFactory', '$rootScope'];
-    
-//     angular.module('appGolf')
-//         .controller('MainController', MainController);
-// }());
-
 (function () {
     "use strict";
     var MainController = function ($scope, SecretsService, AirTableService, HandicapFactory, FireBaseFactory) {    
@@ -34,9 +12,20 @@
             myRounds_PromiseReturn.then(function (data){
                 $scope.myRounds = data;
                 // console.log($scope.myRounds.data.records);
-                $scope.myHandicap = HandicapFactory.CalcHandicap($scope.myRounds.data.records);
-                // console.log($scope.myHandicap);
-                $scope.APA = FireBaseFactory.intoFireBase($scope.FireBase_Secrets, $scope.myHandicap); //Into FireBase 
+                $scope.HandicapCalc = HandicapFactory.CalcHandicap($scope.myRounds.data.records);
+                console.log($scope.HandicapCalc);
+                
+                //Getting current Handicap
+                $scope.HandicapNow = FireBaseFactory.getNowHandicap($scope.FireBase_Secrets); 
+                $scope.HandicapNow.$loaded().then(function(){
+                    console.log($scope.HandicapNow.$value); 
+                    // console.log(angular.equals($scope.HandicapCalc,$scope.HandicapNow.$value));
+                    if(!angular.equals($scope.HandicapCalc,$scope.HandicapNow.$value)){
+                        //Update FireBase
+                        FireBaseFactory.updateHandicap($scope.FireBase_Secrets, $scope.HandicapCalc);
+                    }
+                });
+                
             });
             
         }).catch(function(){
