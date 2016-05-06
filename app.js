@@ -1,6 +1,6 @@
 (function () {
     "use strict";
-    var appGolf = angular.module('appGolf', ['ngRoute', 'firebase']);
+    var appGolf = angular.module('appGolf', ['ngRoute', 'firebase', 'chart.js']);
     
     appGolf.config(['$routeProvider', function($routeProvider){
 		$routeProvider
@@ -9,5 +9,5 @@
                 templateUrl: 'Views/home.html'
             })            
             .otherwise({redirectTo: '/'});
-	}]);    
+	}]);
 }());
