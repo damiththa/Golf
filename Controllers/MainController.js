@@ -11,8 +11,7 @@
             // //Get values past Handicaps
             var HandicapDates = [""];
             var HandicapValues = [30];
-            var PastHandicaps = FireBaseFactory.getPastHandicaps($scope.FireBase_Secrets);
-            // console.log($scope.PastHandicaps);
+            var PastHandicaps = FireBaseFactory.getPastHandicaps($scope.FireBase_Secrets);            
             PastHandicaps.$loaded().then(function(){
                 angular.forEach(PastHandicaps, function(HC){
                     // console.log(HC.HandicapWas, HC.Date);
@@ -25,7 +24,7 @@
                 $scope.data = [HandicapValues];
             });
             
-            //Get my best(top 10) rounds from AirTable
+            //Get my rounds from AirTable
             var myRounds_PromiseReturn = AirTableService.getMyRounds($scope.AirTable_Secrets);           
             myRounds_PromiseReturn.then(function (data){
                 $scope.myRounds = data;
