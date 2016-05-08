@@ -3,10 +3,10 @@
     var AirTableService = function ($http) { 
         return {
             getMyRounds: function(AirTable_secret){
-                return $http.get(AirTable_secret.url+'callback=JSON_CALLBACK', {
+                return $http.get(AirTable_secret.url+'&callback=JSON_CALLBACK', {
                     params: {
                         view: 'Main View',       
-                        maxRecords: 10,
+                        // maxRecords: 10,
                         sort: [{"field": 'Score', "direction":'asc'}]                        
                     },
                     paramSerializer: '$httpParamSerializerJQLike',                    
