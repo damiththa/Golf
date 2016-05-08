@@ -1,15 +1,31 @@
 <!doctype html>
 <html lang="en-us" ng-app="appGolf">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MDMS - Golf Handicap</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MDMS -World of Golf</title>
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/angular-chart.js/0.10.2/angular-chart.min.css">
+    <link rel="stylesheet" href="Styles/mainStyles.css">
 </head>
 <body>
-    
-    <div ng-view></div>
+    <div class="container">
+      <br>
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="#/home">Home</a></li>
+            <li role="presentation"><a href="#/rounds">Rounds</a></li>
+            <li role="presentation"><a href="#/courses">Courses</a></li>
+            <li role="presentation"><a href="#/about">About</a></li>
+          </ul>
+        </nav>
+        <h3 class="text-muted">MDMS - Golf</h3>
+      </div>      
+      <div ng-view></div>      
+    </div>
     
 <!--scripts-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
@@ -19,6 +35,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-chart.js/0.10.2/angular-chart.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="//static.airtable.com/js/embed/embed_snippet_v1.js"></script>
 <script src="app.js"></script>
 <script src="Controllers/MainController.js"></script>
 <script src="Services/SecretsService.js"></script>
