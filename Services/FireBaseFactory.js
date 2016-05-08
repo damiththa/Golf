@@ -10,7 +10,7 @@
             },
             updateHandicap: function(FireBase_secret, newHandicap){
                 var ref = new Firebase(FireBase_secret.url + '/CurrentHandicap');                
-                // console.log(newHandicap);                
+                console.log(newHandicap);                
                 ref.update({HandicapIs: newHandicap, UpdateDate: todayIs});                
             },
             intoHandicapHistory: function(FireBase_secret, newHandicap){
