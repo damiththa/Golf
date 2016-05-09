@@ -10,7 +10,7 @@
             
             // //Get values past Handicaps
             var HandicapDates = [""];
-            var HandicapValues = [30];
+            var HandicapValues = [35];
             var PastHandicaps = FireBaseFactory.getPastHandicaps($scope.FireBase_Secrets);            
             PastHandicaps.$loaded().then(function(){
                 angular.forEach(PastHandicaps, function(HC){
