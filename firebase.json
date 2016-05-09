@@ -1,0 +1,9 @@
+{
+  "firebase": "mdms-golf",
+  "public": "Public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
