@@ -4,40 +4,43 @@
     <br>
 </p>
 <p>
-    <h4>Step 1 In Handicap Formula: Calculate the Differentials</h4>
-    &nbsp;&nbsp;&nbsp;<i>(Score - Course Rating) x 113 / Slope Rating</i>
+    <h4><u>Step 1:</u> In Handicap Formula: Calculate the Differentials</h4>
+    Let say, if your score is <span class="badge">85</span>, course rating is <span class="badge">72.2</span> and course slope is <span class="badge">131</span>. 
     <br>
-    &nbsp;&nbsp;&nbsp;Let say, if your score is <span class="badge">85</span>, course rating is <span class="badge">72.2</span> and course slope is <span class="badge">131</span>, plugging into the formula will give you a <i>Handicap Differential</i> of <span class="label label-info">11.04</span> (a USGA constant).
+    Plugging into formula, <strong>(Score - Course Rating) x 113 / Slope Rating</strong> gives you a <i>Handicap Differential</i> of <span class="label label-info">11.04</span>.
     <br>
-    <strong>(85 - 72.2) x 113 / 131 = 11.04</strong>     
+    <i>(Note: 113 is a USGA constant)</i>
+    <br><br>     
 </p>
 <p>
-    <h4>Step 2: Determine How Many Differentials To Use</h4>
-    &nbsp;&nbsp;&nbsp;Let say you have <span class="badge">12</span> rounds under your belt, as the article mentioned you take your <span class="badge">5</span> lowest differentials.
+    <h4><u>Step 2:</u> Determine How Many Differentials To Use</h4>
+    Let say you have <span class="badge">12</span> rounds under your belt, as the article mentioned you take your <span class="badge">5</span> lowest differentials.
+    <br><br>
 </p>
 <p>     
-    <h4>Step 3: Average Your Differentials</h4>
-    &nbsp;&nbsp;&nbsp;Staying with the same example, <span class="badge">12</span> rounds, <span class="badge">5</span> differentials, you find the average (i.e. dividing the 5 lowest differentials by 5).
+    <h4><u>Step 3:</u> Average Your Differentials</h4>
+    Staying with the same example, <span class="badge">12</span> rounds, <span class="badge">5</span> differentials, you find the average (i.e. by dividing the 5 lowest differentials by 5).
+    <br><br>
 </p>   
 <p> 
-    <h4>Step 4: Arriving At Your Handicap Index</h4>
-    &nbsp;&nbsp;&nbsp;Now take average (let's say it's <span class="badge">11.698</span>) multiply it by <span class="badge">0.96</span> (another USGA constant) will give you your Handicap Index. <strong>11.698 X 0.96 = 11.23</strong>
+    <h4><u>Step 4:</u> Arriving At Your Handicap Index</h4>
+    Now take average, let's say it's <span class="badge">11.698</span>, multiply that by <span class="badge">0.96</span> <i>(another USGA constant)</i> will give you your Handicap Index. <strong>11.698 X 0.96 = 11.23</strong>
     <br>
-    Handicap Index <span class="label label-success">11.2</span>.  
+    Therefore your handicap index is <span class="label label-success">11.2</span>.  
 </p>
 <p>
   As you can see, you need at lease <span class="label label-primary">20</span> rounds in to get an accurate handicap index.
 </p>
-
-<h3><u>What this page is doing</u></h3>
+<br>
+<h3><u>What this <a href="https://mdms-golf.firebaseapp.com/#/" target="_blank">page</a> is doing</u></h3>
 <p>
-    All my course details, round info. etc. all are recorded in <a href="https://airtable.com/" target="_blank">AirTable.</a> Just as I eneter my round score, it automatically calculates and stores my Handicap Differentials. 
+    My course details, round info. etc. all are recorded in <a href="https://airtable.com/" target="_blank">AirTable.</a> Just as I enter my round score, it automatically calculates and stores my Handicap Differentials (step 1). 
 </p>
 <p>
-    When this page is loading, it makes an API call to <a href="https://airtable.com/" target="_blank">AirTable</a> to get all stored info according to number of rounds recorded (step 2)
+    When this <a href="https://mdms-golf.firebaseapp.com/#/" target="_blank">page</a> is loading, it makes an API call to <a href="https://airtable.com/" target="_blank">AirTable</a> to get all those stored info according to number of rounds recorded (step 2)
 </p>
 <p>
-    page the does step 3 and 4 and then checks that Handicap Index against what's stored in <a href="http://www.FireBase.com" target="_blank">FireBase</a> as my current handicap.     
+    <a href="https://mdms-golf.firebaseapp.com/#/" target="_blank">Page</a> the does step 3 and 4 and checks that Handicap Index against what's stored in <a href="http://www.FireBase.com" target="_blank">FireBase</a> as my current handicap.     
     <br>
     If different, it updates my current Handicap Index and also makes an entry in the Handicap History node so that chart can display how my Handicap has changed over time. 
 </p>
